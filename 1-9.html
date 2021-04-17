@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        // s = s.split("");
+        // for (let i = 0; i < s.length; i++) {
+        //   if (s[i] === "A") s.splice(i, 1, "#");
+        // }
+        // return s.join("");
+        //        return s.replaceAll("A", "#");
+        // 스트링은 값이 복사되는거지 배열처럼 주소값(얕은참조,주소참조)을 복사하는게 아니다.
+        // ☆return s.replace(/A/g, '#')
+        for (const str of s) {
+          if (str === "A") answer += "#";
+          else answer += str;
+        }
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

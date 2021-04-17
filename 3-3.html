@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = "";
+        for (const s of str) {
+          //if (!isNaN(Number(s))) answer += s;
+          // if (!isNaN(s)) answer += s;
+          //parseInt를 쓰지 않을경우 앞에 0없애려면? 조건식에서
+          if (!isNaN(s)) answer = answer * 10 + Number(s);
+        }
+        //스트링을 정수로 만들기
+        return parseInt(answer);
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

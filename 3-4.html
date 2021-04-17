@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+        // 내가 구현하려고 했던 코드
+        // let arr = str.split("e");
+        // for (let i = 0; i < arr.length - 1; i++) {
+        //   console.log(arr[i]);
+        //   let temp = [];
+        //   if (arr[i] === "") answer.push(0);
+        //   const n = arr[i].length;
+        //   for (let j = 0; j < Math.ceil(n / 2); j++) {
+        //     temp[j] = j + 1;
+        //     temp[n - j - 1] = j + 1;
+        //   }
+        //   answer = answer.concat(temp);
+        //   answer.push(0);
+        // }
+        //순차적으로 한번 순회했다가 거꾸로 순회하는것이 포인트
+        let p = 1000;
+
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] !== t) {
+            p++;
+            answer.push(p);
+          } else {
+            p = 0;
+            answer.push(0);
+          }
+        }
+
+        for (let i = s.length - 1; i >= 0; i--) {
+          if (s[i] !== t) {
+            p++;
+            if (answer[i] >= p) {
+              answer[i] = p;
+            }
+          } else {
+            p = 0;
+          }
+        }
+
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
