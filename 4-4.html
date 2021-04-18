@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, product) {
+        let answer = 0;
+        let n = product.length;
+        //sort a - b
+        product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+
+        for (let i = 0; i < n; i++) {
+          //i 번째 상품부터 할인
+          //money 할인 상품을 뺀 남머지 돈
+          let money = m - (product[i][0] / 2 + product0[i][1]);
+          //몇개를 살 수 있는지 카운팅
+          let cnt = 1;
+          for (let j = 0; j < n; j++) {
+            //돈이 부족할때 나머지 for문 돌지 않도록 break;
+            if (j !== i && product[j][0] + product[j][1] > money) break;
+            //i는 할인된 상품이라 제외
+            //남은 예산보다 작거나 같아야 구매가능
+            if (j !== i && product[j][0] + product[j][1] <= money) {
+              money -= product[j][0] + product[j][1];
+              cnt++;
+            }
+          }
+          answer = Math.max(answer, cnt);
+        }
+        return answer;
+      }
+
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>
