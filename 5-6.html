@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        //내가 푼 문제
+        // let answer;
+        // let sH = new Map();
+        // for (const [i, v] of Object.entries(s)) {
+        //   if (sH.get(v)) {
+        //     sH.set(v, sH.get(v) + 1);
+        //   } else {
+        //     sH.set(v, 1);
+        //   }
+        // }
+
+        // let sumTemp = 0;
+        // for (const v of sH.entries()) {
+        //   if (v[1] > sumTemp) {
+        //     sumTemp = v[1];
+        //     answer = v[0];
+        //   }
+        // }
+
+        // return answer;
+
+        //정답 해설
+        let answer;
+        let sH = new Map();
+        for (let x of s) {
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          else sH.set(x, 1);
+        }
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let [key, val] of sH) {
+          if (val > max) {
+            max = val;
+            answer = key;
+          }
+        }
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDEEEEEEE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
